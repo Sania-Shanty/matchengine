@@ -1,0 +1,24 @@
+{
+  "name": "matchengine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MatchEngine: a simplified stock order matching platform",
+  "scripts": {
+    "db:create": "node database/scripts/create_databases.js",
+    "db:migrate": "node database/scripts/migrate.js",
+    "db:seed": "node database/scripts/seed.js",
+    "db:reset:test": "node database/scripts/reset_test_db.js",
+    "db:reset:demo": "node database/scripts/reset_demo_db.js --yes",
+    "db:verify": "node database/scripts/verify_phase1.js",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "test": "npm --prefix backend test",
+    "bench": "node scripts/benchmark_locking.js",
+    "postman:build": "node scripts/build_postman_collection.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "pg": "^8.11.3"
+  }
+}

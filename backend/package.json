@@ -1,0 +1,30 @@
+{
+  "name": "matchengine-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MatchEngine backend API",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "smoke": "node scripts/smoke_test_phase2.js",
+    "smoke3": "node scripts/smoke_test_phase3.js",
+    "test": "vitest run",
+    "test:concurrency": "vitest run tests/concurrency",
+    "test:property": "vitest run tests/property",
+    "test:integrity": "vitest run tests/integrity",
+    "test:unit": "vitest run tests/unit"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "fast-check": "^3.23.1",
+    "vitest": "^2.1.8"
+  }
+}

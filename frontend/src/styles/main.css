@@ -1,0 +1,383 @@
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #1c2430;
+  --muted: #6b7686;
+  --border: #e1e6ee;
+  --brand: #1f4fd8;
+  --buy: #0f9d58;
+  --sell: #d93025;
+  --buy-bg: rgba(15, 157, 88, 0.14);
+  --sell-bg: rgba(217, 48, 37, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.45;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  margin: 0 0 0.5rem;
+}
+h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+code {
+  background: #eef1f6;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+.navbar {
+  background: #0f1b34;
+  color: #fff;
+}
+.navbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.brand span {
+  color: #6ea0ff;
+}
+.brand:hover {
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+.nav-links a {
+  color: #c4cfe6;
+}
+.nav-links a.active {
+  color: #fff;
+  font-weight: 600;
+}
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.nav-user .muted {
+  color: #c4cfe6;
+}
+.page-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.grid-trade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (max-width: 800px) {
+  .grid-trade {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+}
+.column .card {
+  margin-bottom: 0;
+}
+.card.narrow {
+  max-width: 420px;
+  margin: 2rem auto;
+}
+
+/* ---------- Text helpers ---------- */
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 0.875rem;
+}
+.center {
+  text-align: center;
+}
+.strong {
+  font-weight: 700;
+}
+.hint {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.buy-text {
+  color: var(--buy);
+  font-weight: 600;
+}
+.sell-text {
+  color: var(--sell);
+  font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 7px;
+  background: var(--brand);
+  color: #fff;
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover {
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.btn-small {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+}
+.btn-wide {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #5b6b8f;
+  color: #fff;
+}
+.btn.buy {
+  background: var(--buy);
+}
+.btn.sell {
+  background: var(--sell);
+}
+
+/* ---------- Forms ---------- */
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+input {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.55rem 0.65rem;
+  font-size: 1rem;
+  border: 1px solid #c9d1de;
+  border-radius: 7px;
+  background: #fff;
+}
+input:focus {
+  outline: 2px solid #b9ccff;
+  border-color: var(--brand);
+}
+.side-toggle {
+  display: flex;
+  margin-bottom: 0.9rem;
+  border: 1px solid #c9d1de;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.side-toggle button {
+  flex: 1;
+  border: 0;
+  padding: 0.5rem;
+  background: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.side-toggle button.active.buy {
+  background: var(--buy);
+  color: #fff;
+}
+.side-toggle button.active.sell {
+  background: var(--sell);
+  color: #fff;
+}
+
+/* ---------- Messages ---------- */
+.alert {
+  border-radius: 7px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  margin: 0.6rem 0;
+}
+.alert-error {
+  background: #fdecea;
+  color: #9b1c12;
+}
+.alert-ok {
+  background: #e7f6ec;
+  color: #11602f;
+}
+
+/* ---------- Tables ---------- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  padding: 0.55rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.table th {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.table.compact th,
+.table.compact td {
+  padding: 0.35rem 0.4rem;
+  font-size: 0.875rem;
+}
+.num {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums;
+}
+.scroll-x {
+  overflow-x: auto;
+}
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #e8ecf3;
+}
+.badge-open {
+  background: #e3ecff;
+  color: #1f4fd8;
+}
+.badge-partial {
+  background: #fff3d6;
+  color: #8a5a00;
+}
+.badge-filled {
+  background: #e7f6ec;
+  color: #11602f;
+}
+
+/* ---------- Balance ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+.stats dt {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.stats dd {
+  margin: 0.15rem 0 0;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Order book ---------- */
+.ob-head,
+.ob-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.6fr;
+  padding: 0.28rem 0.5rem;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+.ob-head {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.ob-head span:not(:first-child),
+.ob-row span:not(:first-of-type) {
+  text-align: right;
+}
+.ob-row {
+  position: relative;
+}
+.ob-row span {
+  position: relative;
+  z-index: 1;
+}
+.ob-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+.ob-row.ask .ob-bar {
+  background: var(--sell-bg);
+}
+.ob-row.bid .ob-bar {
+  background: var(--buy-bg);
+}
+.ob-row.ask .ob-price {
+  color: var(--sell);
+  font-weight: 600;
+}
+.ob-row.bid .ob-price {
+  color: var(--buy);
+  font-weight: 600;
+}
+.ob-spread {
+  text-align: center;
+  padding: 0.35rem;
+  margin: 0.2rem 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+}
