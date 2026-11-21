@@ -1,13 +1,15 @@
 import { formatRupees } from '../utils/format.js';
+import { Skeleton } from './States.jsx';
 
-// Shows cash, reserved cash and available cash.
-// If "holding" is given, also shows shares of that one security.
+// Cash, reserved cash and available cash.
+// If "holding" is given (even null), also shows shares of that one security.
 export default function BalanceCard({ account, holding, symbol }) {
   if (!account) {
     return (
       <div className="card">
         <h3>Your balance</h3>
-        <p className="muted">Loading...</p>
+        <Skeleton height={20} width="60%" />
+        <Skeleton height={20} width="40%" style={{ marginTop: 10 }} />
       </div>
     );
   }
