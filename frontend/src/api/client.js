@@ -1,11 +1,22 @@
 // The ONE place that talks to the backend.
 // Every request goes to /api/..., which Vite forwards to http://localhost:4000.
+//
+// The login token lives in sessionStorage, which belongs to ONE browser tab.
+// (localStorage is shared by all tabs, so logging in as Bob in a second tab
+// used to switch Alice's first tab to Bob's token behind her back.)
 
 const TOKEN_KEY = 'matchengine_token';
 
-export const getToken = () => localStorage.getItem(TOKEN_KEY);
-export const setToken = (token) => localStorage.setItem(TOKEN_KEY, token);
-export const clearToken = () => localStorage.removeItem(TOKEN_KEY);
+// Remove any token the older version saved in localStorage.
+try {
+  localStorage.removeItem(TOKEN_KEY);
+} catch (error) {
+  // storage can be blocked; nothing to do
+}
+
+export const getToken = () => sessionStorage.getItem(TOKEN_KEY);
+export const setToken = (token) => sessionStorage.setItem(TOKEN_KEY, token);
+export const clearToken = () => sessionStorage.removeItem(TOKEN_KEY);
 
 export class ApiError extends Error {
   constructor(status, code, message) {
@@ -65,6 +76,7 @@ export const api = {
   login: (email, password) => request('POST', '/auth/login', { email, password }),
   me: () => request('GET', '/auth/me'),
 
+  market: () => request('GET', '/market'),
   securities: () => request('GET', '/securities'),
   orderBook: (symbol) => request('GET', `/orderbook/${encodeURIComponent(symbol)}`),
   trades: (symbol, limit = 30) =>
